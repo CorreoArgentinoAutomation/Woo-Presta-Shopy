@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="200.103" tests="1" skipped="0" failures="1" errors="0">
+<testcase classname="Compra de productos en la tienda a través de WordPress y Correo Argentino" name="Compra exitosa con envío a sucursal y verificación del numero de pedido - Example #1.1" time="199.698">
+<failure type="org.openqa.selenium.NoSuchElementException" message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[1]&quot;}
+  (Session info: MicrosoftEdge=129.0.2792.79)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.3'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [851ba2c0b6212706752097a7a1afd568, findElement {using=xpath, value=(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[1]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 129.0.2792.79, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:63957}, msedge: {msedgedriverVersion: 129.0.2792.65 (7eae50a1bc8e..., userDataDir: C:\Users\RODRIG~1.VAR\AppDa...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63957/devtoo..., se:cdpVersion: 129.0.2792.79, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 851ba2c0b6212706752097a7a1afd568">
+<![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[1]"}
+  (Session info: MicrosoftEdge=129.0.2792.79)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.3'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [851ba2c0b6212706752097a7a1afd568, findElement {using=xpath, value=(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[1]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 129.0.2792.79, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:63957}, msedge: {msedgedriverVersion: 129.0.2792.65 (7eae50a1bc8e..., userDataDir: C:\Users\RODRIG~1.VAR\AppDa...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63957/devtoo..., se:cdpVersion: 129.0.2792.79, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 851ba2c0b6212706752097a7a1afd568
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:360)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:354)
+	at framework.BasePage.extraerNumeros(BasePage.java:124)
+	at page.PlataformaIntegracion.Woocommerce.CheckOut.mostrarDatosDelPedido(CheckOut.java:102)
+	at page.PlataformaIntegracion.Woocommerce.CheckOut.finalizarPedido(CheckOut.java:97)
+	at stepsDefinitions.PlataformaIntegracion.WoocommerceAlternoSteps.hago_clic_en_el_boton_de_finalizar_pedido_y_me_redirijo_al_detalle_del_pedido(WoocommerceAlternoSteps.java:70)
+	at ?.hago clic en el boton de Finalizar pedido y me redirijo al detalle del pedido(file:///C:/Users/Rodrigo.Vargas/Documents/Correo%20Argentino/Presta/PPDIPI-Woo/src/main/resources/features/PlataformaIntegracion/WooCommerce/5WooSeleccionDomicilioOp2.feature:17)
+]]>
+</failure>
+<system-out><![CDATA[
+Given configuro el plugin de mi correo con el "Monotributista"..............passed
+And ingreso al Ecommerce....................................................passed
+And me dirijo a la tienda que contiene los productos........................passed
+When agrego algun producto al carrito y espero que se cargue en el carrito..passed
+And me dirijo al Carrito....................................................passed
+And selecciono una opcion de envio que sea a domicilio......................passed
+And hago clic en el boton Finalizar Compra para dirigirme al checkout.......passed
+And quito el check del envio alterno........................................passed
+And hago clic en el boton de Finalizar pedido y me redirijo al detalle del pedido.failed
+Then capturo los datos del pedido...........................................skipped
+And visualizo el numero del pedido..........................................skipped
+And pago el pedido en PrestaShop con el "Monotributista"....................skipped
+]]></system-out>
+</testcase>
+</testsuite>
