@@ -90,7 +90,7 @@ public class CheckOut extends BasePage {
 
     //6
     public void finalizarPedido(){
-        waitForSeconds(2(5));
+        waitForSeconds(28);
         scrollPageUpDown(0,1);
         click(btnRealizarElPedido);
         waitForSeconds(10);
