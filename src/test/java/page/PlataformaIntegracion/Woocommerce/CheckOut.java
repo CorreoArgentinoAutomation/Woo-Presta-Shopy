@@ -26,12 +26,9 @@ public class CheckOut extends BasePage {
     private By correoUsLocator = By.xpath("(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[4]");
     private By fechaLocator = By.xpath("(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[2]");
 
-
     public CheckOut(WebDriver driver) {
         super(driver);
     }
-
-
 
     public void checkTienda(){
         waitForSeconds(1);
@@ -83,9 +80,12 @@ public class CheckOut extends BasePage {
     }
     //5
     public void escribirEnSucursal(){
+        //for(int i=0;i<7;i++){
         click(cuadroTexto);
         writeText(cuadroTexto,"Capital");
+        //System.out.println("Esta es la ejecución número: " + (i + 1));
         sendEnter();
+        //}
     }
 
     //6

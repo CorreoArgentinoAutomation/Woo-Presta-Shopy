@@ -1,5 +1,5 @@
 @PPDIPI-3228
-@Woocommerce
+
 @envios
 Feature: Compra de productos en la tienda a través de WordPress y Correo Argentino
   Como usuario de la tienda
