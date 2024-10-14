@@ -81,8 +81,8 @@ public class Dashboard extends BasePage {
     private By pluginCampoCodigoPostal = By.xpath("//input[@id='woocommerce_correoargentino_shipping_method_zip_code']");
     private By pluginCampoCelular = By.xpath("//input[@id='woocommerce_correoargentino_shipping_method_cellphone']");
 
-
     //Preimponer para Paq.AR
+
     private By btnWooCommerce = By.xpath("//div[@class='wp-menu-name' and text()='WooCommerce']");
     private By btnPedidosWooCommerce = By.xpath("//a[@href='admin.php?page=wc-orders' and text()='Pedidos']");
     private By btnDashboard = By.xpath("(//a[@class='ab-item' and @role='menuitem' and @href='https://stgwoo.integracionesco.shop/wp-admin/about.php'])[1]");
@@ -91,6 +91,24 @@ public class Dashboard extends BasePage {
     private By checkTodosLosPedidos = By.xpath("//input[@id='cb-select-all-1']");
     private By btnAplicarPedidosPaqAr = By.xpath("//input[@id='doaction']");
     private By validacionCambioDeEstado = By.xpath("//div[@class='updated' and p='Cambiado el estado de 1 pedido.']");
+
+    //Algoritmo de Cotizacion
+
+    private By menuProductos = By.xpath("//div[.='Productos']");
+    private By btnAnadirProducto = By.xpath("//div[@class='wrap']/a[.='Añadir nuevo']");
+    private By txtNombreProducto = By.xpath("//input[@id='title']");
+    private By txtPrecioProducto = By.xpath("//input[@id='_regular_price']");
+    private By menuEnvio = By.xpath("//span[.='Envío']");
+    private By txtPeso = By.xpath("//input[@id='_weight']");
+    private By txtLongitud = By.xpath("//input[@id='product_length']");
+    private By txtAncho = By.xpath("//input[@id='product_width']");
+    private By txtAlto = By.xpath("//input[@id='product_height']");
+    private By btnPublicarProducto = By.xpath("//input[@id='publish']");
+    private By validacionProducto = By.xpath("//p[.='Producto publicado. Ver producto']");
+    //private By  = By.xpath("");
+    //private By  = By.xpath("");
+    //private By  = By.xpath("");
+    //private By  = By.xpath("");
 
 
     public Dashboard(WebDriver driver) {
@@ -654,4 +672,71 @@ public class Dashboard extends BasePage {
         validarCampoExistente(validacionCambioDeEstado);
         System.out.println("Cambio de estado de todos los pedidos");
     }
+
+    //Algoritmo de cotizacion
+    //1 scenario outline para crear los paquetes con las medidas y peso que se quiera
+    //Flujo para configurar un producto
+    //Desde el dashboard hacer clic
+    //1 - clic en el boton productos
+    //2 - clic en el boton añadir nuevo
+    //3 - Escribir en el nombre del "producto"
+    //4 - Hacer un sroll hacia abajo y escribir en precio 1
+    //5 - hacer clic en el boton Envio
+    //6 - Ingresar el "Peso"
+    //7 - Ingresar las dimenciones "Longitud","Ancho","Alto"
+    //8 - Hacer clic en publicar
+    public void ingresarAProductos(){
+        click(menuProductos);
+    }
+    public void anadirProducto(){
+        click(btnAnadirProducto);
+    }
+    public void nombreProducto(String nombre){
+        writeText(txtNombreProducto, nombre);
+        System.out.println("\n--------------------------------");
+        System.out.println("Datos del nuevo producto: ");
+        System.out.println("--------------------------------");
+        System.out.println("Nombre: "+ nombre);
+    }
+    public void precioProducto(String precio){
+        click(txtPrecioProducto);
+        writeText(txtPrecioProducto, precio);
+        System.out.println("Precio: "+ precio);
+    }
+    public void menuEnvio(){
+        click(menuEnvio);
+    }
+
+    public void pesoProducto(String peso){
+        click(txtPeso);
+        writeText(txtPeso, peso);
+        System.out.println("peso: "+ peso +" kg");
+    }
+    public void logitudProducto(String longitud){
+        click(txtLongitud);
+        writeText(txtLongitud, longitud);
+        System.out.println("longitud: "+ longitud +" cm");
+    }
+    public void anchoProducto(String ancho){
+        click(txtAncho);
+        writeText(txtAncho, ancho);
+        System.out.println("longitud: "+ ancho +" cm");
+    }
+    public void altoProducto(String alto){
+        click(txtAlto);
+        writeText(txtAlto, alto);
+        System.out.println("alto: "+ alto +" cm");
+        System.out.println("--------------------------------");
+        System.out.println("--------------------------------");
+    }
+    public void publicarProducto(){
+        waitForSeconds(1);
+        click(btnPublicarProducto);
+    }
+    public void validarProducto(){
+        compararTextoConMensajeEsperado(validacionProducto,"Producto publicado. Ver producto");
+        System.out.println("Producto publicado.");
+    }
+
+
 }
