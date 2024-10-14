@@ -21,6 +21,6 @@ Feature: Compra de productos en la tienda a través de WordPress y Correo Argent
     And pago el pedido en PrestaShop con el "<tipoUsuario>"
     Examples:
       | tipoUsuario      |
-      #| Consumidor final |
+      | Consumidor final |
       | Monotributista   |
-      #| Empresa          |
+      | Empresa          |
