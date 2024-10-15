@@ -25,7 +25,8 @@ public class CheckOut extends BasePage {
     private By numeroPedido = By.xpath("(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[1]");
     private By correoUsLocator = By.xpath("(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[4]");
     private By fechaLocator = By.xpath("(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[2]");
-
+    private By primeraSucursal = By.xpath("//li[@class='select2-results__option select2-results__option--selectable select2-results__option--selected select2-results__option--highlighted']");
+    private By afuera = By.xpath("//div[@id='order_review']");
     public CheckOut(WebDriver driver) {
         super(driver);
     }
@@ -80,12 +81,15 @@ public class CheckOut extends BasePage {
     }
     //5
     public void escribirEnSucursal(){
-        //for(int i=0;i<7;i++){
+        //for(int i=0;i<3;i++){
         click(cuadroTexto);
-        writeText(cuadroTexto,"Capital");
+        //writeText(cuadroTexto,"a");
+        click(primeraSucursal);
         //System.out.println("Esta es la ejecución número: " + (i + 1));
-        sendEnter();
+        //click(afuera);
+        //waitForSeconds(2);
         //}
+        sendEnter();
     }
 
     //6
