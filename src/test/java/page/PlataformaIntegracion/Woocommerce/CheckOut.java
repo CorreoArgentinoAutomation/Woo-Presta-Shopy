@@ -83,8 +83,8 @@ public class CheckOut extends BasePage {
     public void escribirEnSucursal(){
         //for(int i=0;i<3;i++){
         click(cuadroTexto);
-        //writeText(cuadroTexto,"a");
-        click(primeraSucursal);
+        writeText(cuadroTexto,"a");
+        //click(primeraSucursal);
         //System.out.println("Esta es la ejecución número: " + (i + 1));
         //click(afuera);
         //waitForSeconds(2);

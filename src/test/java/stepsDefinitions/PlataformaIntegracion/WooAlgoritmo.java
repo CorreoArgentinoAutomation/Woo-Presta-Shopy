@@ -69,4 +69,9 @@ public class WooAlgoritmo {
         dashboard.validarProducto();
     }
 
+    @Given("el usuario crea un producto con {string},{string},{string},{string},{string},{string}")
+    public void el_usuario_crea_un_producto_con(String nombre, String precio, String peso, String longitud,String ancho, String alto) {
+        dashboard.publicarProductos(nombre, precio, peso, longitud,ancho, alto);
+    }
+
 }

@@ -201,4 +201,9 @@ public class WoocommerceAlternoSteps {
         dashboard.validarMensajeGuardado();
 
     }
+    //selecciono el paquete que quiero
+    @Given("selecciono el paquete que quiera {string}")
+    public void selecciono_el_paquete_que_quiera(String string) {
+        dashboard.seleccionoProducto(string);
+    }
 }
