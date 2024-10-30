@@ -3,9 +3,6 @@ package page.MiCorreo1_5;
 import framework.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class PageCheckOut extends BasePage {
     PageForm pageForm;
@@ -229,7 +226,61 @@ public class PageCheckOut extends BasePage {
          */
     }
 
+//Algoritmo de cotizacion
 
+    public void validarMedidas(String paquete,String numeroPedido,String tipoDeUsuario){
+        abrirNuevaPestanaYNavegarAEntornoDePruebas();
+
+        loguin(tipoDeUsuario);
+
+        click(btnMisEnvios);
+
+
+        String medidas = buscarElementoEnTabla(numeroPedido);
+
+        String medidasAValidar = "remplazar en swich";
+
+        switch (paquete){
+            case "paquete1":
+                medidasAValidar = "50kg - 100x80x10cm";
+                break;
+            case "paquete2":
+                medidasAValidar = "1kg - 10x10x10cm";
+                break;
+            case "paquete3":
+                medidasAValidar = "2kg - 70x50x40cm";
+                break;
+            case "paquete4":
+                medidasAValidar = "2kg - 90x75x40cm";
+                break;
+            case "paquete5","paquete6":
+                medidasAValidar = "3kg - 70x50x50cm";
+                break;
+            case "paquete7":
+                medidasAValidar = "3kg - 70x50x60cm";
+                break;
+            case "paquete8":
+                medidasAValidar = "3kg - 60x50x25cm";
+                break;
+            case "paquete9":
+                medidasAValidar = "4kg - 75x55x60cm";
+                break;
+            case "paquete10":
+                medidasAValidar = "10kg - 100x50x140cm";
+                break;
+            case "paquete11":
+                medidasAValidar = "2kg - 200x50x45cm";
+                break;
+            case "paquete12":
+                medidasAValidar = "51kg - 20x20x30cm";
+                break;
+            default:
+                System.out.println("No Esta definido ese producto: " + paquete + "no existe");
+        }
+
+        txtIguales(medidas,medidasAValidar);
+
+    }
 
 
 

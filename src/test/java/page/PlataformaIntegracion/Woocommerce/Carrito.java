@@ -16,6 +16,7 @@ public class Carrito extends BasePage {
     private By seleccionarEnvioClasico = By.xpath("(//input[@name='shipping_method[0]'])[4]");
     private By btnFinalizarCompra = By.xpath("//a[@class='checkout-button button alt wc-forward wp-element-button']");
 
+    private By msjError = By.xpath("//div[@class='notice notice-error woocommerce-error']");
     public Carrito(WebDriver driver) {
         super(driver);
     }
@@ -41,4 +42,15 @@ public class Carrito extends BasePage {
     //Flujo a seguir en el carrito
     //1 - seleccionar una opcion de envio que sea a domicilio
     //2 - Hacer un clic en el boton "Finalizar Compra" para dirigirse al checkout
+
+
+    //validar msj de error por peso
+
+    public void validarMsjError() {
+        compararTextoConMensajeEsperado(msjError, "Uno o más paquetes exceden el peso y/o medidas máximas permitidas por Correo Argentino");
+    }
+
+
+
+
 }

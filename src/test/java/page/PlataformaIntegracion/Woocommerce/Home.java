@@ -18,6 +18,9 @@ public class Home extends BasePage {
 
     private By btnAgregarAcarrito = By.xpath("//button[@type='submit']");
 
+    private By btnVerCarrito2 = By.xpath("(//a[contains(.,'Ver carrito')])[1]");
+    private By actualizarCarrito = By.xpath("//button[@name='update_cart']");
+    private By irCheckOut = By.xpath("//a[.='Finalizar compra']");
     public Home(WebDriver driver) {
         super(driver);
     }
@@ -57,7 +60,7 @@ public class Home extends BasePage {
         waitForSeconds(25);
     }
     //3
-        public void irAlCarrito() {
+    public void irAlCarrito() {
         click(btnCarrito);
     }
     public void irAlCheckup() {
@@ -75,5 +78,81 @@ public class Home extends BasePage {
         agregarAlProductoCarrito();
         irAlCheckup();
     }
+
+    //seleccionar varios productos para el algoritmo
+    public void agregarAlProductosAValidar(String repetir) {
+        waitForSeconds(1);
+        //click(btnAgregarAlcarrito);
+        int numero = Integer.parseInt(repetir);
+
+        for (int i = 1; i <= numero; i++) { // Cambia 10 por el número máximo de elementos que esperas
+            By btnAgregarAlcarrito = By.xpath("(//span[@data-wc-text='state.addToCartText'])[" + i + "]");
+            // Aquí puedes agregar el código para interactuar con el elemento, por ejemplo:
+             //driver.findElement(btnAgregarAlcarrito).click();
+
+            waitForSeconds(10);
+            click(btnAgregarAlcarrito);
+            waitForSeconds(20);
+        }
+        //scrollPageUpDown(3,0);
+        //irAlCarrito();
+
+        waitForSeconds(15);
+        //click(btnCarrito);
+        //click(btnVerCarrito2);
+
+    }
+
+
+    public void agregarProductosAlCarrito(String repetir) {
+        waitForSeconds(1);
+        //click(btnAgregarAlcarrito);
+        int numero = Integer.parseInt(repetir);
+
+        for (int i = 1; i <= numero; i++) { // Cambia 10 por el número máximo de elementos que esperas
+            By aumentarProductos = By.xpath("(//input[@class='input-text qty text'])[" + i + "]");
+            // Aquí puedes agregar el código para interactuar con el elemento, por ejemplo:
+            //driver.findElement(btnAgregarAlcarrito).click();
+            waitForSeconds(1);
+            click(aumentarProductos);
+            writeText(aumentarProductos, "2");
+            //waitForSeconds(1);
+        }
+        scrollPageUpDown(0,1);
+        click(actualizarCarrito);
+        waitForSeconds(10);
+        scrollPageUpDown(2,0);
+
+    }
+
+
+    public void seleccionarLosProductosNecesarios(String nombreProducto) {
+
+        switch (nombreProducto){
+            case "paquete1","paquete2":
+                agregarAlProductosAValidar("1");
+                break;
+            case "paquete3","paquete4","paquete11","paquete12":
+                agregarAlProductosAValidar("2");
+                break;
+            case "paquete5","paquete6","paquete7","paquete8":
+                agregarAlProductosAValidar("3");
+                break;
+            case "paquete9":
+                agregarAlProductosAValidar("4");
+                break;
+            case "paquete10":
+                agregarAlProductosAValidar("5");
+                agregarAlProductosAValidar("5");
+                //agregarProductosAlCarrito("5");
+                break;
+            default:
+                System.out.println("No Esta definido ese producto: " + nombreProducto + "no existe");
+        }
+        click(btnVerCarrito2);
+        click(irCheckOut);
+
+    }
+
 
 }

@@ -4,8 +4,6 @@ import framework.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Arrays;
-
 public class Dashboard extends BasePage {
 
     private By usrlocator = By.xpath("//input[@id='user_login']");
@@ -108,6 +106,19 @@ public class Dashboard extends BasePage {
     private By txtAlto = By.xpath("//input[@id='product_height']");
     private By btnPublicarProducto = By.xpath("//input[@id='publish']");
     private By validacionProducto = By.xpath("//p[.='Producto publicado. Ver producto']");
+
+    //borrar productos
+
+    private By checkProductos = By.xpath("//td[@id='cb']/input[1]");
+    private By opcionPapelera = By.xpath("//select[@id='bulk-action-selector-top']/option[.='Mover a la papelera']");
+    private By btnAplicarProductos = By.xpath("//input[@id='doaction']");
+    private By btnPapelera = By.xpath("//li[@class='trash']");
+    private By opcionBorrarPermanente = By.xpath("//select[@id='bulk-action-selector-top']/option[.='Borrar permanentemente']");
+
+    private By btncrearProducto = By.xpath("//a[.='Crear producto']");
+    private By cerrarTutorial = By.xpath("//button[@class='components-button woocommerce-tour-kit-step-controls__close-btn has-icon']");
+    private By msjCrearProducto = By.xpath("//h2[@class='woocommerce-BlankState-message']");
+
     //private By  = By.xpath("");
     //private By  = By.xpath("");
     //private By  = By.xpath("");
@@ -741,79 +752,118 @@ public class Dashboard extends BasePage {
         System.out.println("Producto publicado.");
     }
 
+
+
+    public void crearProductos(String nombreProducto){
+        waitForSeconds(1);
+        click(menuProductos);
+        condicionalDeFunciones(btncrearProducto, this::borrarProductos, () -> seleccionoProducto(nombreProducto));
+        //condicionalDeFunciones(btncrearProducto, borrarProductos(), seleccionoProducto(nombreProducto));
+        //ejecutarCondicional(btncrearProducto, seleccionoProducto(), borrarProductos());
+
+    }
+
     //Seleccionar el producto a crear
 
-    public void seleccionoProducto(String nombreProducto) {
 
-        click(menuProductos);
+    public void seleccionoProducto(String nombreProducto) {
+        //waitForSeconds(1);
+        //click(menuProductos);
+        //borrarProductos();
+
+
+        //condicionalDeFunciones(btncrearProducto, this::borrarProductos, () -> publicarProductos("ProdQA200", "1", "50", "100", "80", "10"));
+
+        /*
         publicarProductos("Producto 1", "1", "1", "1", "1", "1");
         click(menuProductos);
         System.out.println("se puede ejecutar aqui");
         borrarProductos();
         System.out.println("todos los productos fueron borrados");
+*/
 
-       //Crear condicional aca para que no necesite crear el producto inicial.
-
-        switch (nombreProducto){
+        System.out.println("se puede ejecutar aqui");
+        switch (nombreProducto) {
             case "paquete1":
-                //click(menuProductos);
                 publicarProductos("ProdQA1", "1", "50", "100", "80", "10");
                 break;
             case "paquete2":
                 publicarProductos("ProdQA2", "1", "1", "10", "10", "10");
                 break;
             case "paquete3":
+            {
                 publicarProductos("ProdQA3", "1", "1", "50", "20", "70");
                 publicarProductos("ProdQA4", "1", "1", "70", "50", "20");
-                break;
+            }
+            break;
             case "paquete4":
+            {
                 publicarProductos("ProdQA5", "1", "1", "30", "90", "70");
                 publicarProductos("ProdQA6", "1", "1", "10", "75", "80");
-                break;
+            }
+            break;
             case "paquete5":
+            {
                 publicarProductos("ProdQA7", "1", "1", "50", "70", "20");
                 publicarProductos("ProdQA8", "1", "1", "70", "20", "50");
                 publicarProductos("ProdQA9", "1", "1", "35", "45", "10");
-                break;
+            }
+            break;
             case "paquete6":
+            {
                 publicarProductos("ProdQA4", "1", "1", "70", "50", "20");
+                publicarProductos("ProdQA44", "1", "1", "70", "50", "20");
                 publicarProductos("ProdQA10", "1", "1", "35", "55", "10");
-                break;
+            }
+            break;
             case "paquete7":
+            {
                 publicarProductos("ProdQA7", "1", "1", "50", "70", "20");
                 publicarProductos("ProdQA8", "1", "1", "70", "20", "50");
                 publicarProductos("ProdQA4", "1", "1", "70", "50", "20");
-                break;
+            }
+            break;
             case "paquete8":
+            {
                 publicarProductos("ProdQA11", "1", "1", "50", "60", "10");
                 publicarProductos("ProdQA12", "1", "1", "20", "40", "5");
                 publicarProductos("ProdQA13", "1", "1", "10", "15", "10");
-                break;
+            }
+            break;
             case "paquete9":
+            {
                 publicarProductos("ProdQA7", "1", "1", "50", "70", "20");
+                publicarProductos("ProdQA77", "1", "1", "50", "70", "20");
                 publicarProductos("ProdQA14", "1", "1", "75", "45", "10");
                 publicarProductos("ProdQA15", "1", "1", "65", "55", "10");
-                break;
+            }
+            break;
             case "paquete10":
-                //click(menuProductos);
+            {
                 publicarProductos("ProdQA4", "1", "1", "70", "50", "20");
                 publicarProductos("ProdQA9", "1", "1", "35", "45", "10");
                 publicarProductos("ProdQA10", "1", "1", "35", "55", "10");
                 publicarProductos("ProdQA11", "1", "1", "50", "60", "10");
                 publicarProductos("ProdQA16", "1", "1", "100", "50", "20");
-                break;
-            case "paquete11":
+            }
+            break;
+            case "paquete11": {
                 publicarProductos("ProdQA17", "1", "1", "200", "50", "35");
                 publicarProductos("ProdQA18", "1", "1", "90", "30", "10");
-                break;
+            }
+            break;
             case "paquete12":
-                publicarProductos("ProdQA19", "1", "1", "20", "20", "20");
+            {
+                publicarProductos("ProdQA19", "1", "50", "20", "20", "20");
                 publicarProductos("ProdQA2", "1", "1", "10", "10", "10");
-                break;
+            }
             default:
                 System.out.println("No Esta definido ese producto: " + nombreProducto + "no existe");
+            break;
         }
+
     }
+
 
 
     public void publicarProductos(String nombre, String precio, String peso, String longitud,String ancho, String alto){
@@ -821,7 +871,6 @@ public class Dashboard extends BasePage {
         //click(menuProductos);
 
         click(btnAnadirProducto2);
-        System.out.println("btn añadir producto");
 
         writeText(txtNombreProducto, nombre);
         System.out.println("\n--------------------------------");
@@ -866,14 +915,7 @@ public class Dashboard extends BasePage {
     //6 - seleccionar todos los productos disponibles
     //7 - seleccionar la opcion borrar permanentemente - //select[@id='bulk-action-selector-top']/option[.='Borrar permanentemente']
     //8 - hacer un clic en el boton Aplicar
-    private By checkProductos = By.xpath("//td[@id='cb']/input[1]");
-    private By opcionPapelera = By.xpath("//select[@id='bulk-action-selector-top']/option[.='Mover a la papelera']");
-    private By btnAplicarProductos = By.xpath("//input[@id='doaction']");
-    private By btnPapelera = By.xpath("//li[@class='trash']");
-    private By opcionBorrarPermanente = By.xpath("//select[@id='bulk-action-selector-top']/option[.='Borrar permanentemente']");
 
-    private By btncrearProducto = By.xpath("//a[.='Crear producto']");
-    private By cerrarTutorial = By.xpath("//button[@class='components-button woocommerce-tour-kit-step-controls__close-btn has-icon']");
 
     public void borrarProductos(){
 
@@ -886,15 +928,9 @@ public class Dashboard extends BasePage {
         click(opcionBorrarPermanente);
         click(btnAplicarProductos);
 
-        /*
-        waitForSeconds(1);
-        System.out.println("crear nuevo producto");
-        click(btncrearProducto);
-        System.out.println("cerrar el tutorial");
-        click(cerrarTutorial);
-
-         */
 
     }
+
+
 
 }

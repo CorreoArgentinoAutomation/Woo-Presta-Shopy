@@ -17,7 +17,7 @@ public class CheckOut extends BasePage {
     private By seleccionPrimeraSucursal = By.xpath("//li[@class='select2-results__option select2-results__option--selectable select2-results__option--highlighted']");
     private By checkEnvioAlterno = By.xpath("//input[@id='ship-to-different-address-checkbox']");
     private By btnFinalizarCompra = By.xpath("//a[@class='checkout-button button alt wc-forward wp-element-button']");
-    private By btnRealizarElPedido = By.xpath("//button[@class='button alt wp-element-button']");
+    private By btnRealizarElPedido = By.xpath("//button[@id='place_order']");    //button[@class='button alt wp-element-button']");
     private By btnRealizaPedido = By.xpath("//button[@value='Realizar el pedido' and @data-value='Realizar el pedido']");
     private By totalDeArriba = By.xpath("(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[3]");
     private By totalDeAbajo = By.xpath("(//span[@class='woocommerce-Price-amount amount'])[14]");

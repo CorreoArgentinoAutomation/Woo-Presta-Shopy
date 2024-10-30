@@ -200,6 +200,7 @@ public class BasePage {
     }
 
     public WebElement findElement(By locator) {
+        System.out.println("El elemento existe");
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
@@ -339,6 +340,23 @@ public class BasePage {
             System.out.println("Ocurrió un error al comparar los textos.");
         }
     }
+
+
+
+    public void txtIguales(String texto1, String texto2) {
+
+
+        if (texto1.equals(texto2)) {
+            System.out.println("Las medidas del paquete estan bien.");
+        } else {
+            System.out.println("Las medidas del paquete estan mal.");
+        }
+
+
+    //return texto1.equals(texto2);
+    }
+
+
 
     public void imprimirContenidoTabla(By tablaLocator) {
         WebElement tabla = driver.findElement(tablaLocator);
@@ -480,7 +498,7 @@ public class BasePage {
         driver.switchTo().window(nuevaPestana);
     }
 
-    public void buscarElementoEnTabla(String numeroOrden) {
+    public String buscarElementoEnTabla(String numeroOrden) {
 
         WebElement registro = buscarRegistroPorNumeroOrden(driver, numeroOrden);
 
@@ -489,6 +507,23 @@ public class BasePage {
         } else {
             System.out.println("Registro no encontrado.");
         }
+
+
+        String pesoYMedidas = null;
+        if (registro != null) {
+            // Encuentra la celda de la columna "Detalles" en la fila encontrada
+            WebElement columnaDetalles = registro.findElement(By.xpath(".//td[8]"));
+            pesoYMedidas = columnaDetalles.getText();
+            System.out.println("==========================================");
+            System.out.println("Peso y medidas del paquete " + numeroOrden + ": " + pesoYMedidas);
+            System.out.println("==========================================");
+
+
+        } else {
+            System.out.println("Registro no encontrado.");
+        }
+
+        return (pesoYMedidas);
 
     }
 
@@ -510,6 +545,70 @@ public class BasePage {
         }
         return null; // Si no se encuentra el registro
     }
+
+
+    public void condicionalDeFunciones(By locator, Runnable funcion1, Runnable funcion2) {
+        try {
+            WebElement elemento = driver.findElement(locator);
+            // Si el elemento se encuentra, ejecuta la función1
+            funcion2.run();
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            // Si el elemento no se encuentra, ejecuta la función2
+            funcion1.run();
+            funcion2.run();
+        }
+    }
+
+    public void ejecutarCondicional(By locator, Runnable funcionSiEncuentra, Runnable funcionSiNoEncuentra) {
+        try {
+            // Intentar encontrar el elemento
+            WebElement elemento = driver.findElement(locator);
+            // Si el elemento se encuentra, ejecutar la función correspondiente
+            funcionSiEncuentra.run();
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            // Si el elemento no se encuentra, ejecutar la otra función
+            funcionSiNoEncuentra.run();
+        }
+    }
+
+
+
+
+
+
+     public void detallesTabla(String numeroOrden){
+         // Número de orden a buscar
+         //String numeroOrden = "575";
+
+         // Encuentra la fila que contiene el número de orden
+         //WebElement filaOrden = driver.findElement(By.xpath("//td[text()='" + numeroOrden + "']/parent::tr"));
+
+         WebElement filaOrden = driver.findElement(By.xpath("//tbody[2]//div[contains(.,'" + numeroOrden +"')]"));
+
+
+         // Captura los detalles de la orden
+         String detalles = filaOrden.findElement(By.xpath(".//td[9]")).getText(); // Ajusta el índice según la columna de detalles
+
+         // Separa los detalles en variables
+         String[] partes = detalles.split(" - ");
+         String peso = partes[0].trim();
+         String[] dimensiones = partes[1].split("x");
+         String alto = dimensiones[0].trim();
+         String largo = dimensiones[1].trim();
+         String ancho = dimensiones[2].trim();
+
+         // Imprime los detalles
+         System.out.println("Peso: " + peso);
+         System.out.println("Alto: " + alto);
+         System.out.println("Largo: " + largo);
+         System.out.println("Ancho: " + ancho);
+
+         // Cierra el navegador
+     }
+
+
+
+
 
 }
 

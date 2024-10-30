@@ -204,6 +204,45 @@ public class WoocommerceAlternoSteps {
     //selecciono el paquete que quiero
     @Given("selecciono el paquete que quiera {string}")
     public void selecciono_el_paquete_que_quiera(String string) {
-        dashboard.seleccionoProducto(string);
+        dashboard.crearProductos(string);
     }
+
+    @Given("selecciono el {string} que quiero")
+    public void selecciono_el_que_quiero(String string) {
+        //dashboard.seleccionoProducto(string);
+        dashboard.crearProductos(string);
+    }
+
+    @Given("Agrego los productos al carrito segun el {string}")
+    public void agrego_los_productos_al_carrito_segun_el(String string) {
+        dashboard.ingresarEcommerce();
+        home.irAlTienda();
+        //home.agregarAlProductosAValidar(string);
+        //esta funcion abria que moverla a la PAge de Carrito
+        home.seleccionarLosProductosNecesarios(string);
+        checkout.quitarEnvioAlterno();
+        checkout.seleccionOpcionEnvioDomicioOp2();
+        checkout.finalizarPedido();
+        checkout.mostrarDatosDelPedido();
+
+        pedidoImportado = dashboard.importarPedido();
+        System.out.println("El numero del pedido es: " + pedidoImportado);
+    }
+
+
+    @Given("valido las medidas del {string} con el {string}")
+    public void valido_las_medidas_del_con_el(String paquete, String tipoDeUsuario) {
+        pageCheckOut.validarMedidas(paquete,pedidoImportado,tipoDeUsuario);
+    }
+
+
+    @Given("valido mensaje de error en el {string}")
+    public void valido_mensaje_de_error_en_el(String paquete) {
+        dashboard.ingresarEcommerce();
+        home.irAlTienda();
+        home.seleccionarLosProductosNecesarios(paquete);
+        carrito.validarMsjError();
+    }
+
+
 }
