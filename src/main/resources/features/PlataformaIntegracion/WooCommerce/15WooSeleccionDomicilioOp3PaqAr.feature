@@ -8,6 +8,7 @@ Feature: Compra de productos en la tienda a través de WordPress y Correo Argent
 
   Scenario: Compra exitosa con envío a sucursal y verificación del numero de pedido
     Given configuro el plugin de mi correo con el usuario PaqAr
+    And creo un producto
     And ingreso al Ecommerce
     And me dirijo a la tienda que contiene los productos
     When agrego algun producto al carrito y espero que se cargue en el carrito

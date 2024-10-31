@@ -46,6 +46,32 @@ public class WoocommerSteps {
         System.out.println("Inicio de sesion exitoso");
         dashboard.validarSubMenu();
     }
+    @Given("configuro el plugin")
+    public void configuro_el_plugin() {
+        dashboard.irAlMenuPlugin();
+
+        dashboard.desactivarPlugin();
+
+        dashboard.activarPlugin();
+
+        dashboard.seleccionarServicio();
+
+        dashboard.seleccionoMiCorreo();
+
+        dashboard.seleccionarCotizador();
+
+        dashboard.seleccionarOpcionCotizador();
+
+        dashboard.guardarCambios();
+
+        dashboard.seleccionoUsuario("Consumidor final");
+
+        dashboard.llenarFormularioDeNegocio();
+    }
+    @Given("creo un producto")
+    public void creo_un_producto() {
+        dashboard.crearProductos("paquete2");
+    }
     @When("ingresa al ecommerce")
     public void ingresaAlEcommerce() {
         dashboard.ingresarEcommerce();

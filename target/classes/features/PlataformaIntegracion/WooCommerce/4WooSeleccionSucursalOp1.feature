@@ -13,12 +13,17 @@ Feature: Compra de productos en la tienda a través de WordPress y Correo Argent
     #And valido los submenus del plugin de Correo Argentino
 
     Given configuro el plugin de mi correo con el "<tipoUsuario>"
+    And selecciono el "<Paquete>" que quiero
     And ingreso al Ecommerce
     And me dirijo a la tienda que contiene los productos
     When agrego algun producto al carrito y espero que se cargue en el carrito
-    And me dirijo al Carrito
-    And selecciono una opcion de envio que sea a domicilio
-    And hago clic en el boton Finalizar Compra para dirigirme al checkout
+
+    And me dirijo al checkout
+
+    #And me dirijo al Carrito
+    #And selecciono una opcion de envio que sea a domicilio
+    #And hago clic en el boton Finalizar Compra para dirigirme al checkout
+
     And quito el check del envio alterno
     And selecciono la primera opcion de envio y que sea un envio a sucursal
     And selecciono el envio a sucursal
@@ -28,7 +33,7 @@ Feature: Compra de productos en la tienda a través de WordPress y Correo Argent
     And visualizo el numero del pedido
     And pago el pedido en PrestaShop con el "<tipoUsuario>"
     Examples:
-      | tipoUsuario      |
-      | Consumidor final |
-      | Monotributista   |
-      | Empresa          |
+      | tipoUsuario      | Paquete  |
+      | Consumidor final | paquete2 |
+      | Monotributista   | paquete2 |
+      | Empresa          | paquete2 |
