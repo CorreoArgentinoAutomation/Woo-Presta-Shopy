@@ -50,6 +50,8 @@ public class WoocommerceAlternoSteps {
     public void me_dirijo_a_la_tienda_que_contiene_los_productos() {home.irAlTienda();}
     @When("agrego algun producto al carrito y espero que se cargue en el carrito")
     public void agrego_algun_producto_al_carrito_y_espero_que_se_cargue_en_el_carrito() {home.agregarAlProductoCarrito();}
+    @When("me dirijo al checkout")
+    public void me_dirijo_al_checkout() {home.irAlCheckup();}
     @When("me dirijo al Carrito")
     public void me_dirijo_al_carrito() {home.irAlCarrito();}
     @When("selecciono una opcion de envio que sea a domicilio")
