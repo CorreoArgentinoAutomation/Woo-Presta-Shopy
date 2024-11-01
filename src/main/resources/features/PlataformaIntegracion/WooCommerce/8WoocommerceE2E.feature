@@ -1,6 +1,7 @@
 # commentPPDIPI-3167 primer caso en aqui
 @PPDIPI-3236
 @Woocommerce
+@CasosMiCorreo
 Feature: Flujo principal de usuario en el sistema de ecommerce
   Background:
     Given el usuario se situa en el ambiente de pruebas

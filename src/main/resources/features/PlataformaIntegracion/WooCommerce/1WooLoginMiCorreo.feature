@@ -1,5 +1,6 @@
 @PPDIPI-3221
 @Woocommerce
+@CasosMiCorreo
 Feature: Validar configuracion de servicios en WordPress
 
   Scenario Outline: Configuracion de servicio Mi Correo en WordPress

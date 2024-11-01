@@ -1,5 +1,6 @@
+@PPDIPI-3830
 @ALgoritmoCotizacionPostivo
-Feature: Agrego productos de diferentes tamaños para cotizar en el algoritmo
+Feature: Agrego productos de diferentes tamaï¿½os para cotizar en el algoritmo
 
   Scenario Outline: Agrego productos para validar el algoritmo de cotizacion
   Given configuro el plugin de mi correo con el "<tipoUsuario>"

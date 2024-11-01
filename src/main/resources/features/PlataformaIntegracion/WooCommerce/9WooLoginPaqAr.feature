@@ -1,5 +1,6 @@
 @PPDIPI-3222
 @Woocommerce
+@CasosPaqAr
 Feature: Validar configuracion de servicios en WordPress
 
   Scenario: Configuracion de servicio Mi Correo en WordPress
