@@ -1,5 +1,6 @@
 @PPDIPI-3229
 @Woocommerce
+@CasosPaqAr
 @envios
 Feature: Compra de productos en la tienda a través de WordPress y Correo Argentino
   Como usuario de la tienda
