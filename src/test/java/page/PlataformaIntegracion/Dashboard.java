@@ -848,7 +848,7 @@ public class Dashboard extends BasePage {
             }
             break;
             case "paquete11": {
-                publicarProductos("ProdQA17", "1", "1", "200", "50", "35");
+                publicarProductos("ProdQA17", "1", "1", "201", "50", "35");
                 publicarProductos("ProdQA18", "1", "1", "90", "30", "10");
             }
             break;
