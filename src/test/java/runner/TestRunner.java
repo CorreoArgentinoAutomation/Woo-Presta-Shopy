@@ -16,8 +16,8 @@ import org.junit.runners.Suite;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         features = {"src/main/resources/features/PlataformaIntegracion"
         },
-        glue = {"stepsDefinitions", "framework","PlataformaIntegracion","Google","MiCorreo1_5","Presta","Shopify"}, // Agrega el paquete de los hooks y framework
-        tags =  "@CasosPaqAr"
+        glue = {"stepsDefinitions", "framework","PlataformaIntegracion","Google","MiCorreo1_5","Presta","Shopify","Magento"}, // Agrega el paquete de los hooks y framework
+        tags =  "@MagentoFlujo1"
         //"@PPDIPI-3167"
 )
 public class TestRunner {

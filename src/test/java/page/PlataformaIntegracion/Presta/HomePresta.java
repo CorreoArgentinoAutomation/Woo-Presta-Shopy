@@ -17,7 +17,7 @@ public class HomePresta extends BasePage {
 
     //Abrir la tienda
     public void ingresarALaTienda(){
-        String urlNuevoAmbiente = "https://integracionesco.shop/pra/";
+        String urlNuevoAmbiente = "https://prestashop.integracionesco.shop/ag/";//"https://integracionesco.shop/pra/";
         abrirNuevaPestanaYNavegarA(urlNuevoAmbiente);
     }
     public void loginTienda(){

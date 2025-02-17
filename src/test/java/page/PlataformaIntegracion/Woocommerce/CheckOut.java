@@ -6,13 +6,13 @@ import org.openqa.selenium.WebDriver;
 
 public class CheckOut extends BasePage {
 
-    private By radioBtnPrimeraOpcion = By.xpath("(//input[@class='shipping_method'])[1]");
-    private By radioBtnSegundaOpcion = By.xpath("(//input[@class='shipping_method'])[2]");
-    private By radioBtnTerceraOpcion = By.xpath("(//input[@class='shipping_method'])[3]");
-    private By radioBtnCuartaOpcion = By.xpath("(//input[@class='shipping_method'])[4]");
+    private By radioBtnPrimeraOpcion = By.xpath("//label[.='Correo Argentino clásico a sucursal']");//("(//input[@class='shipping_method'])[1]");
+    private By radioBtnSegundaOpcion = By.xpath("//label[.='Correo Argentino clásico a domicilio']");//("(//input[@class='shipping_method'])[2]");
+    private By radioBtnTerceraOpcion = By.xpath("//label[.='Correo Argentino expreso a domicilio']");//("(//input[@class='shipping_method'])[3]");
+    private By radioBtnCuartaOpcion = By.xpath("//label[.='Correo Argentino expreso a sucursal']");//("(//input[@class='shipping_method'])[4]");
     private By listaDeSucursales = By.xpath("//span[@class='select2-dropdown select2-dropdown--below']");
 
-    private By cuadroTexto = By.xpath("//input[@class='select2-search__field']");
+    private By cuadroTexto = By.xpath("//span[@class='select2 select2-container select2-container--default select2-container--focus']//span[@class='select2-selection select2-selection--single']");//("//input[@class='select2-search__field']");
     private By btnseleccionSucursal = By.xpath("(//span[@class='select2-selection__rendered'])[2]");
     private By seleccionPrimeraSucursal = By.xpath("//li[@class='select2-results__option select2-results__option--selectable select2-results__option--highlighted']");
     private By checkEnvioAlterno = By.xpath("//input[@id='ship-to-different-address-checkbox']");
@@ -27,6 +27,26 @@ public class CheckOut extends BasePage {
     private By fechaLocator = By.xpath("(//span[@class='wc-block-order-confirmation-summary-list-item__value'])[2]");
     private By primeraSucursal = By.xpath("//li[@class='select2-results__option select2-results__option--selectable select2-results__option--selected select2-results__option--highlighted']");
     private By afuera = By.xpath("//div[@id='order_review']");
+
+    //formulario del envio
+
+    private By campoNombre = By.xpath("//input[@id='shipping_first_name']");
+
+    private By campoApellidos = By.xpath("//input[@id='shipping_last_name']");
+
+    private By campoDireccion = By.xpath("(//input[@class='input-text '])[13]");
+
+    private By campoAlturaPisoDtp = By.xpath("(//input[@class='input-text '])[14]");
+
+    private By campoPoblacion = By.xpath("(//input[@class='input-text '])[15]");
+
+    private By campoProvincias = By.xpath("//select[@id='shipping_state']");
+    private By campoProvincia = By.xpath("//select[@id='shipping_state']/option[.='Ciudad Autónoma de Buenos Aires']");
+
+    private By campoCodigoPostal = By.xpath("(//input[@class='input-text '])[16]");
+
+
+
     public CheckOut(WebDriver driver) {
         super(driver);
     }
@@ -42,13 +62,28 @@ public class CheckOut extends BasePage {
     }
 
 
+    public void llenarFormularioEnvio(){
+        writeText(campoNombre,"Test");
+        writeText(campoApellidos,"llenado");
+        writeText(campoDireccion,"Rivadavia");
+        writeText(campoAlturaPisoDtp,"2001,1,1");
+        writeText(campoPoblacion,"100");
+        click(campoProvincias);
+        //click(campoProvincia);
+        sendEnter();
+        writeText(campoCodigoPostal,"1020");
+
+        scrollPageUpDown(0,3);
+    }
 
 
     //1 - 2
     public void quitarEnvioAlterno(){
+
         waitForSeconds(1);
         click(checkEnvioAlterno);
         scrollPageUpDown(0,3);
+
     }
 
     //2
@@ -94,6 +129,9 @@ public class CheckOut extends BasePage {
 
     //6
     public void finalizarPedido(){
+        //scrollPageUpDown(3,0);
+        llenarFormularioEnvio();
+
         waitForSeconds(28);
         scrollPageUpDown(0,1);
         click(btnRealizarElPedido);

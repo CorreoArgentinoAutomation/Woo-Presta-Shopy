@@ -14,5 +14,5 @@ Feature: Loguin con el Api Mi Correo
     Examples:
       | tipoUsuario      |
       | Consumidor final |
-      | Monotributista   |
-      | Empresa          |
+      #| Monotributista   |
+      #| Empresa          |

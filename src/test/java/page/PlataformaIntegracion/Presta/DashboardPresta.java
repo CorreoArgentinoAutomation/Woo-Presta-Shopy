@@ -98,7 +98,25 @@ public class DashboardPresta extends BasePage {
     //======================================================================================
     private By validacionNegativa = By.xpath("//div[@class='alert alert-warning' and @role='alert'][contains(text(), 'Se han encontrado los siguientes errores') and contains(., 'Username and Password are required')]");
     private By camposrequeridos = By.xpath("//div[@class='alert alert-warning' and @role='alert']//ul/li");
-    //private By  = By.xpath("");
+    //======================================================================================
+    //Crear Paquetes
+    //======================================================================================
+    private By menuCatalogo = By.xpath("//i[@class='material-icons mi-store']");
+    private By subMenuProductos = By.xpath("//li[@id='subtab-AdminProducts']/a[contains(.,'Productos')]");
+    private By btnProductoNuevo = By.xpath("//a[@id='page-header-desc-configuration-add']");
+    private By iframeProductoEstandar = By.xpath("//button[@class='product-type-choice btn btn-primary']");
+    private By iframeAnadirNuevoProducto = By.xpath("//button[@id='create_product_create']");
+
+    private By nombreProducto = By.xpath("//div[@class='serp-default-title js-locale-input js-locale-ag']/input[@class='serp-default-title form-control']");
+    private By pestanaStock = By.xpath("//a[contains(.,'Stocks')]");
+    private By cantidadDeStock = By.xpath("//input[@id='product_stock_quantities_delta_quantity_delta']");
+    private By pestanaTransporte = By.xpath("//a[@href='#product_shipping-tab']");
+    private By dimensionAncho = By.xpath("//input[@id='product_shipping_dimensions_width']");
+    private By dimensionAlto = By.xpath("//input[@id='product_shipping_dimensions_height']");
+    private By dimensionProfundidad = By.xpath("//input[@id='product_shipping_dimensions_depth']");
+    private By dimensionPeso = By.xpath("//input[@id='product_shipping_dimensions_weight']");
+
+
     //======================================================================================
     //Metodos
     //======================================================================================
@@ -106,7 +124,7 @@ public class DashboardPresta extends BasePage {
     //login
     public void login() {
         String email = "admin@integracionesco.shop";
-        String password = "SzU$H$%W7p";
+        String password = "Pomelo-03";
         writeText(txtEmailLogin, email);
         writeText(txtPassLogin, password);
         click(btnIniciarSesion);
@@ -212,6 +230,7 @@ public class DashboardPresta extends BasePage {
 
         click(campoAltura);
         writeText(campoAltura, "123");
+
 
         click(campoCodigoPostal);
         writeText(campoCodigoPostal, "6740");
@@ -387,7 +406,7 @@ public class DashboardPresta extends BasePage {
 
     //Envios
     public String importarPedido(String pedido){
-        String urlNuevoAmbiente = "https://integracionesco.shop/pra/admin123";
+        String urlNuevoAmbiente = "https://prestashop.integracionesco.shop/admin123";
         abrirNuevaPestanaYNavegarA(urlNuevoAmbiente);
 
         sendTab(9);
@@ -418,7 +437,7 @@ public class DashboardPresta extends BasePage {
 
 
     public void PreImponerPedido(String pedido){
-        String urlNuevoAmbiente = "https://integracionesco.shop/pra/admin123";
+        String urlNuevoAmbiente = "https://prestashop.integracionesco.shop/admin123";
         abrirNuevaPestanaYNavegarA(urlNuevoAmbiente);
 
         sendTab(9);
@@ -487,4 +506,15 @@ public class DashboardPresta extends BasePage {
 
     }
 
+    public void crearPaquerte(){
+        waitForSeconds(1);
+        click(menuCatalogo);
+        click(subMenuProductos);
+        click(btnProductoNuevo);
+
+        waitForSeconds(1);
+        cambioDeIframe();
+        click(iframeProductoEstandar);
+        click(iframeAnadirNuevoProducto);
+    }
 }

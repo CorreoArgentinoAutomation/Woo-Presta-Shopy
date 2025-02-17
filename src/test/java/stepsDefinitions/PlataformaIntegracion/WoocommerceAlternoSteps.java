@@ -54,6 +54,11 @@ public class WoocommerceAlternoSteps {
     public void me_dirijo_al_checkout() {home.irAlCheckup();}
     @When("me dirijo al Carrito")
     public void me_dirijo_al_carrito() {home.irAlCarrito();}
+    @When("calculo el envio")
+    public void calculo_el_envio() {
+        carrito.calcularEnvio();
+        checkout.seleccionOpcionEnvioDomicioOp2();
+    }
     @When("selecciono una opcion de envio que sea a domicilio")
     public void selecciono_una_opcion_de_envio_que_sea_a_domicilio() {carrito.seleccionarSegundaopcionDeEnvio();}
     @When("hago clic en el boton Finalizar Compra para dirigirme al checkout")

@@ -14,13 +14,15 @@ Feature: Compra de productos en la tienda a través de WordPress y Correo Argent
     And me dirijo a la tienda que contiene los productos
     When agrego algun producto al carrito y espero que se cargue en el carrito
 
-    And me dirijo al checkout
+    #quitar este paso para que el flujo valla por carrito para cotiZar
+    #And me dirijo al checkout
 
-    #And me dirijo al Carrito
+    And me dirijo al Carrito
+    And calculo el envio
     #And selecciono una opcion de envio que sea a domicilio
-    #And hago clic en el boton Finalizar Compra para dirigirme al checkout
+    And hago clic en el boton Finalizar Compra para dirigirme al checkout
 
-    And quito el check del envio alterno
+    #And quito el check del envio alterno
     And selecciono la segunda opcion de envio
     And hago clic en el boton de Finalizar pedido y me redirijo al detalle del pedido
     Then capturo los datos del pedido

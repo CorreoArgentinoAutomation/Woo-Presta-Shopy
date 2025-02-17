@@ -37,6 +37,7 @@ public class Dashboard extends BasePage {
     private By campoCodigoPostal = By.xpath("//input[@id='woocommerce_correoargentino_shipping_method_zip_code']");
     private By txtAjustesGuardados = By.xpath("//div [@id='message']//strong[text()='Tus ajustes se han guardado.']");
     private By menuPlugin = By.xpath("//div[.='Plugins 2']");
+    //private By menuPlugin = By.xpath("//div[.='Plugins 4']");
     private By btnDesactivarPlugin = By.xpath("//a[@id='deactivate-correo-argentino-oficial-woocommerce']");
     private By btnActivarPlugin = By.xpath("//a[@id='activate-correo-argentino-oficial-woocommerce']");
     private By txtAcuerdo = By.xpath("//input[@id='woocommerce_correoargentino_shipping_method_agreement']");
@@ -96,7 +97,7 @@ public class Dashboard extends BasePage {
 
     private By menuProductos = By.xpath("//div[.='Productos']");
     private By btnAnadirProducto = By.xpath("//div[@class='wrap']/a[.='Añadir nuevo']");
-    private By btnAnadirProducto2 = By.xpath("//li[@id='menu-posts-product']//a[.='Añadir nuevo']");
+    private By btnAnadirProducto2 = By.xpath("//li[@id='menu-posts-product']//a[.='Añadir un nuevo producto']");//("//li[@id='menu-posts-product']//a[.='Añadir nuevo']");
     private By txtNombreProducto = By.xpath("//input[@id='title']");
     private By txtPrecioProducto = By.xpath("//input[@id='_regular_price']");
     private By menuEnvio = By.xpath("//span[.='Envío']");

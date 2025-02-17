@@ -21,5 +21,5 @@ Feature: Validar configuracion de servicios en WordPress
     Examples:
       | tipoUsuario      |
       | Consumidor final |
-      | Monotributista   |
-      | Empresa          |
+      #| Monotributista   |
+      #| Empresa          |

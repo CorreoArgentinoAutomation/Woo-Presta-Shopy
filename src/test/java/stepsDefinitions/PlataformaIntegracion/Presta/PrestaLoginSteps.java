@@ -54,6 +54,13 @@ public class PrestaLoginSteps {
         dashboardPresta.validarLoginPaqAr();
         System.out.println("el usuario debería ver un mensaje de confirmación de login");
     }
+
+    //crear Paquete
+    @Then("el usuario crea un nuevo paquete")
+    public void el_usuario_crea_un_nuevo_paquete() {
+        dashboardPresta.crearPaquerte();
+    }
+
     @Then("el usuario deberia ver un mensaje con los campos requeridos")
     public void elUsuarioDeberiaVerUnMensajeConLosCamposRequeridos() {
         dashboardPresta.validarCamposRequeridos();

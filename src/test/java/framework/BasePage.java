@@ -146,7 +146,8 @@ public class BasePage {
         }
     }
 
-    public void waitForElementToBeClickable(By locator) {
+
+    public void esperaImplicita(By locator) {
             wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -200,7 +201,7 @@ public class BasePage {
     }
 
     public WebElement findElement(By locator) {
-        System.out.println("El elemento existe");
+        //System.out.println("El elemento existe");
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
@@ -271,6 +272,13 @@ public class BasePage {
     public void switchToFrameByNameOrId(String nameOrId) {
         driver.switchTo().frame(nameOrId);
     }
+
+    //Iframe
+    // Cambiar al iframe usando su ruta
+     public void cambioDeIframe(){
+        driver.switchTo().frame(driver.findElement(By.cssSelector("iframe[name='modal-create-product-iframe']")));
+    }
+
 
     // Método para abrir una nueva pestaña y navegar a una URL
     public void abrirNuevaPestanaYNavegarA(String url) {
@@ -417,6 +425,11 @@ public class BasePage {
         for (int i=0;i<repetir;i++){actions.sendKeys(Keys.ARROW_UP).perform();}
 
     }
+    public void sendFlechaAbajo(int repetir) {
+        Actions actions = new Actions(driver);
+        for (int i=0;i<repetir;i++){actions.sendKeys(Keys.ARROW_DOWN).perform();}
+
+    }
 
     public void sendTab(int repetir) {
         Actions actions = new Actions(driver);
@@ -459,6 +472,38 @@ public class BasePage {
         // Generar un nombre de usuario aleatorio
         String username = "user" + random.nextInt(100000);
         return username;
+    }
+        public String generadorNombresReales() {
+            String[] nombres = {
+                    "Juan", "María", "José", "Ana", "Luis", "Carmen", "Carlos", "Lucía", "Pedro", "Sofía",
+                    "Miguel", "Laura", "Jorge", "Elena", "Francisco", "Marta", "Antonio", "Isabel", "Manuel", "Paula"
+            };
+
+            Random random = new Random();
+            // Generar un nombre latino aleatorio
+            String nombre = nombres[random.nextInt(nombres.length)];
+            return nombre;
+        }
+
+    public String generadorApellidosReales() {
+        String[] apellidos = {
+                "García", "Martínez", "Rodríguez", "López", "González", "Pérez", "Sánchez", "Ramírez", "Torres", "Flores",
+                "Rivera", "Gómez", "Díaz", "Cruz", "Morales", "Ortiz", "Gutiérrez", "Chávez", "Ramos", "Vargas"
+        };
+
+        Random random = new Random();
+        // Generar un apellido latino aleatorio
+        String apellido = apellidos[random.nextInt(apellidos.length)];
+        return apellido;
+    }
+
+    public String generadorNumeroTelefono() {
+        Random random = new Random();
+        // Generar los 8 dígitos restantes aleatorios
+        int numeroAleatorio = 100000 + random.nextInt(900000);
+        // Concatenar "3804" con los 8 dígitos aleatorios
+        String numeroCompleto = "3804" + numeroAleatorio;
+        return numeroCompleto;
     }
 
     public String caracteresAleatorios (int length) {
@@ -547,6 +592,39 @@ public class BasePage {
     }
 
 
+    public void buscarEnTabla(By locator){
+        // El número de seguimiento que quieres buscar
+        String numeroSeguimientoBuscado = "00050021862GI6L5P0MC001";
+
+        // Encontrar la tabla
+        WebElement tabla = driver.findElement(locator);
+
+        // Obtener todas las filas de la tabla
+        List<WebElement> filas = tabla.findElements(By.tagName("tr"));
+
+        // Recorrer las filas y buscar el número de seguimiento
+        boolean encontrado = false;
+        for (WebElement fila : filas) {
+            List<WebElement> celdas = fila.findElements(By.tagName("td"));
+            for (WebElement celda : celdas) {
+                if (celda.getText().equals(numeroSeguimientoBuscado)) {
+                    encontrado = true;
+                    System.out.println("Número de seguimiento encontrado: " + numeroSeguimientoBuscado);
+                    break;
+                }
+            }
+            if (encontrado) {
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("Número de seguimiento no encontrado.");
+
+        }
+    }
+
+
     public void condicionalDeFunciones(By locator, Runnable funcion1, Runnable funcion2) {
         try {
             WebElement elemento = driver.findElement(locator);
@@ -570,10 +648,6 @@ public class BasePage {
             funcionSiNoEncuentra.run();
         }
     }
-
-
-
-
 
 
      public void detallesTabla(String numeroOrden){
@@ -606,9 +680,27 @@ public class BasePage {
          // Cierra el navegador
      }
 
+public void clickConEspera(By locator){
 
+    //WebDriverWait wait = new WebDriverWait(driver, tiempo);
 
+    wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+}
 
+public String extrarNumeroDePedido(By locator){
+    WebElement orderNumberElement = driver.findElement(locator);
+    String orderNumber = orderNumberElement.getText();
+    System.out.println("El número de orden es: " + orderNumber);
+    return orderNumber;
+}
+
+public void recargar(int cantidadDeRecargas){
+    for (int i = 0; i < cantidadDeRecargas; i++) {
+        System.out.println("La pagina se recargo: " + (i + 1));
+        driver.navigate().refresh();
+    }
+
+}
 
 }
 
